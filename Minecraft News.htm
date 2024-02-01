@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft News Hub</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+  }
+  .header {
+    background-color: #f2f2f2;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .nav {
+    overflow: hidden;
+    background-color: #d4d4d4;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .nav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .nav a:hover {
+    background-color: #ddd;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .content {
+    margin: 20px;
+  }
+  .news-item {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .footer {
+    background-color: #dddddd;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transition: background-color 0.3s, color 0.3s;
+  }
+    /* 圆角矩形 */
+  .news-item {
+    border-radius: 20px; /* 增加圆角 */
+  }
+  .nav a {
+    border-radius: 10px;
+  }
+  /* 夜间模式切换按钮 */
+  .night-mode-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #c3c3c3;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+    /* 新增夜间模式样式 */
+  .night-mode {
+    background-color: #333;
+    color: #f0f0f0;
+  }
+  .night-mode a {
+    color: #ddd;
+    background-color: #212121;
+  }
+  .night-mode .nav {
+    background-color: #222222;
+  }
+  .night-mode .nav a:hover {
+    background-color: #444;
+  }
+  .night-mode .news-item {
+    background-color: #444;
+  }
+  .night-mode .header {
+    background-color: #111111;
+    color: #f0f0f0;
+  }
+  .night-mode .footer {
+    background-color: #111111;
+    color: white;
+  }
+  .night-mode .night-mode-toggle {
+    background-color: #000000;
+    color: white;
+  }
+
+  .hidden {
+    display: none; /* 或者使用 visibility: hidden; 根据你的需求选择 */
+  }
+</style>
+</head>
+<body>
+
+<!-- 添加夜间模式切换按钮 -->
+<button class="night-mode-toggle" onclick="toggleNightMode()">切换主题</button>
+
+<div class="header">
+  <h1>Minecraft新闻主页</h1>
+</div>
+
+<div class="nav">
+  <a href="#news">新闻</a>
+</div>
+
+<div class="content">
+  <h2>最近新闻</h2>
+  <div class="news-item">
+    <h3>《我的世界》1.20.4重大更新</h3>
+    <p>紧急修复保存世界后重新加载陶罐内物品会消失的bug。</p>
+  </div>
+  <div class="news-item">
+    <h3>QX 我的世界Java版互通建筑生存服正式开启</h3>
+    <p><strong>官方QQ群：138524583</strong><br />Java 1.7.10-1.20.2<br />基岩版1.20.40/1.20.1/1.20.50/1.20.51</p>
+  </div>
+  <div class="news-item">
+    <h3>CRHMC Java版互通建筑生存服宣传</h3>
+    <p><strong>官方QQ群：485720025</strong><br />Java ≤1.20.1<br />基岩版 最新版本</p>
+  </div>
+  <!-- Add more news items here -->
+
+<div class="footer">
+  <p>&copy; 2024 Minecraft新闻主页 保留所有权利。</p>
+</div>
+
+<script>
+window.addEventListener('scroll', function() {
+  var footer = document.querySelector('.footer');
+  var isAtBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight;
+
+  // 如果用户滚动到底部，显示footer
+  if (isAtBottom) {
+    footer.classList.add('hidden');
+  } else {
+    // 如果用户没有滚动到底部，保持footer的隐藏状态
+    footer.classList.remove('hidden');
+  }
+});
+
+  // 页面加载时，如果页面内容不足以滚动，确保footer显示
+  document.addEventListener('DOMContentLoaded', function() {
+    var footer = document.querySelector('.footer');
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+      footer.classList.remove('hidden');
+    }
+  });
+</script>
+
+<script>
+  function toggleNightMode() {
+    var body = document.body;
+    if (body.classList.contains('night-mode')) {
+      body.classList.remove('night-mode');
+    } else {
+      body.classList.add('night-mode');
+    }
+  }
+</script>
+
+</body>
+</html>
